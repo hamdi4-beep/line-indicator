@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --spacing-inline: .5em;
+    --spacing-bottom: 1em;
+    --size: 3em;
+    --center: var(--size) / 2;
+}
+
+body {
+    display: grid;
+    place-content: center;
+    min-height: 100vh;
+}
+
+.comment:not(:last-of-type) {
+    margin-bottom: 1em;
+}
+
+.user-avatar {
+    width: var(--size);
+    height: var(--size);
+    margin-inline: var(--spacing-inline);
+}
+
+.content {
+    position: relative;
+}
+
+.content::before {
+    content: '';
+    display: block;
+    background-color: black;
+    position: absolute;
+    top: 0;
+    left: calc(var(--center) - calc(var(--size) + var(--spacing-inline)));
+    width: 1px;
+    height: calc(100% + var(--spacing-bottom));
+}
+
+.comment:last-of-type .content::before {
+    display: none;
+}
